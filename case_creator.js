@@ -6,15 +6,16 @@ function sendFormByEmail(e)
   var lastRow = s.getLastRow();
   var i = 2; i < lastRow; i++;
   
+  // Determine people to send email to
+  var sendto = s.getRange(lastRow, <INSERT COLUMN NUMBER for specific team>).getValue()
+  
   // Subject of sent message
-  var subject = "Case #"+ lastRow; 
+  var subject = "New form submitted to " + sendto + " (#" + lastRow + ")"; 
   
   // Gets values from Sheet
   var headers = s.getRange(1,1,1,s.getLastColumn()).getValues()[0]; 
   var message = "";
   
-  // Determine people to send email to
-  var sendto = s.getRange(lastRow,<INSERT COLUMN NUMBER for specific team>).getValue()
   
   // What's printed in the body of the email sent
   for (var h in headers) 
@@ -36,6 +37,7 @@ function sendFormByEmail(e)
   else {
     return;
   }
+  
   
   // Sends the email
   MailApp.sendEmail(email, subject, message); 

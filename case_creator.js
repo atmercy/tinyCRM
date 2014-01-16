@@ -26,13 +26,13 @@ function sendFormByEmail(e)
   
   // Checks specific column for pod selection
   if (sendto == "Team 1") {
-    var email = "team1@example.org"; // Sends email to Team 1
+    var email = "team1@example.org" + s.getRange(lastRow, 2).getValue(); // Sends email to Team 1 and submitter
   }
   else if (sendto == "Team 2") {
-    var email = "team2@example.org"; // Sends email to Team 2
+    var email = "team2@example.org" + s.getRange(lastRow, 2).getValue(); // Sends email to Team 2 and submitter
   }
   else if (sendto == "Team 3") {
-    var email = "team3@example.org"; // Sends email to Team 3
+    var email = "team3@example.org" + s.getRange(lastRow, 2).getValue(); // Sends email to Team 3 and submitter
   }
   else {
     return;
@@ -40,5 +40,5 @@ function sendFormByEmail(e)
   
   
   // Sends the email
-  MailApp.sendEmail(email, subject, message); 
+  MailApp.sendEmail(email, subject, message, { name:"Reassign" }); 
 }

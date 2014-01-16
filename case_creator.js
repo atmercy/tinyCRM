@@ -40,5 +40,5 @@ function sendFormByEmail(e)
   
   
   // Sends the email
-  MailApp.sendEmail(email, subject, message, { name:"Reassign" }); 
+  MailApp.sendEmail(email, subject, message, { name: "<name for the from field (cosmetic)>" }); 
 }
